@@ -56,7 +56,7 @@ TR_STANDARDS = {
     ],
     "100": [
         {
-            "variant": "100 kVA (มาตรฐานเดิม)",
+            "variant": "100 kVA (2 Feeder - หม้อแปลงระบบจำหน่าย)",
             "TR_CODE": "1050010067",
             "items": {
                 "1040020002": {"name": "L.T. H.R.C. FUSE 80 A.", "qty": -6.0},
@@ -71,16 +71,24 @@ TR_STANDARDS = {
             }
         },
         {
-            "variant": "100 kVA (รูปแบบที่ 2 - แก้ไขข้อมูลเอง)",
+            "variant": "100 kVA (1 Feeder - หม้อแปลงเฉพาะราย)",
             "TR_CODE": "1050010067",
             "items": {
-                "xxxx1": {"name": "รายการใหม่", "qty": 0.0}
+                "1040020004": {"name": "L.T. H.R.C. FUSE 150-160 A.", "qty": -3.0},
+                "1040020014": {"name": "H.R.C. FUSE, BLADE CONTACT, 160 A.", "qty": 3.0},
+                "1040020100": {"name": "L.T. FUSE SWITCHES 1X400 A. 500 V.", "qty": -3.0},
+                "1040020102": {"name": "FSD, FULL INSULATED, 1X400A", "qty": 3.0},
+                "1050010067": {"name": "TR. 100 kVA, 3P", "qty": 1.0},
+                "14023": {"name": "L.T. FUSE, 100KVA 3-P,4WIRE, 160A", "qty": 1.0},
+                "14147": {"name": "X-ARM-C WITH 3 L.T., 3-P, 1CCT ,12.2, 14 M", "qty": 1.0},
+                "40128": {"name": "LT WIRING 95 SQ.MM. TO Meter", "qty": 1.0},
+                "40205": {"name": "TR. INST. ON SINGLE POLE 50-250 kVA", "qty": 1.0}
             }
         }
     ],
     "160": [
         {
-            "variant": "160 kVA (มาตรฐานเดิม)",
+            "variant": "160 kVA (2 Feeder - หม้อแปลงระบบจำหน่าย)",
             "TR_CODE": "1050010068",
             "items": {
                 "1040020002": {"name": "L.T. H.R.C. FUSE 80 A.", "qty": -3.0},
@@ -98,16 +106,25 @@ TR_STANDARDS = {
             }
         },
         {
-            "variant": "160 kVA (รูปแบบที่ 2 - แก้ไขข้อมูลเอง)",
+            "variant": "160 kVA (1 Feeder - หม้อแปลงเฉพาะราย)",
             "TR_CODE": "1050010068",
             "items": {
-                "xxxx1": {"name": "รายการใหม่", "qty": 0.0}
+                "1020070007": {"name": "Cable,AL,Compact 185 sq.mm.", "qty": 55.0},
+                "1020420106": {"name": "Cable Lug,Compression type, AL 185 sq.mm.": 10.0},
+                "1040020005": {"name": "L.T. H.R.C. FUSE 200 A.", "qty": -3.0},
+                "1040020015": {"name": "H.R.C. FUSE, BLADE CONTACT, 200 A.", "qty": 3.0},            
+                "1040020100": {"name": "L.T. FUSE SWITCHES 1X400 A. 500 V.", "qty": -3.0},
+                "1040020102": {"name": "FSD, FULL INSULATED, 1X400A", "qty": 3.0},
+                "1050010068": {"name": "TR. 160 kVA, 3P", "qty": 1.0},
+                "14024": {"name": "L.T. FUSE, 140KVA 3-P,4WIRE, 200A", "qty": 1.0},
+                "14147": {"name": "X-ARM-C WITH 3 L.T., 3-P, 1CCT ,12.2, 14 M", "qty": 1.0},
+                "40205": {"name": "TR. INST. ON SINGLE POLE 50-250 kVA", "qty": 1.0}
             }
         }
     ],
     "250": [
         {
-            "variant": "250 kVA (มาตรฐานเดิม)",
+            "variant": "250 kVA (2 Feeder - หม้อแปลงระบบจำหน่าย)",
             "TR_CODE": "1050010069",
             "items": {
                 "1040020004": {"name": "L.T. H.R.C. FUSE 150-160 A.", "qty": -3.0},
@@ -125,10 +142,21 @@ TR_STANDARDS = {
             }
         },
         {
-            "variant": "250 kVA (รูปแบบที่ 2 - แก้ไขข้อมูลเอง)",
+            "variant": "250 kVA (2 Feeder - หม้อแปลงเฉพาะราย)",
             "TR_CODE": "1050010069",
             "items": {
-                "xxxx1": {"name": "รายการใหม่", "qty": 0.0}
+                "1040020004": {"name": "L.T. H.R.C. FUSE 150-160 A.", "qty": -3.0},
+                "1040020005": {"name": "L.T. H.R.C. FUSE 200 A.", "qty": -3.0},
+                "1040020014": {"name": "H.R.C. FUSE, BLADE CONTACT, 160 A.", "qty": 3.0},
+                "1040020015": {"name": "H.R.C. FUSE, BLADE CONTACT, 200 A.", "qty": 3.0},
+                "1040020100": {"name": "L.T. FUSE SWITCHES 1X400 A. 500 V.", "qty": -6.0},
+                "1040020102": {"name": "FSD, FULL INSULATED, 1X400A", "qty": 6.0},
+                "1050010069": {"name": "TR. 250 kVA, 3P", "qty": 1.0},
+                "14023": {"name": "L.T. FUSE, 100KVA 3-P,4WIRE, 160A", "qty": 1.0},
+                "14024": {"name": "L.T. FUSE, 140KVA 3-P,4WIRE, 200A", "qty": 1.0},
+                "14148": {"name": "X-ARM-C WITH 6 L.T., 3-P, 2CCT ,12.2, 14 M", "qty": 1.0},
+                "40129": {"name": "LT WIRING 120 SQ.MM. TO L.T.", "qty": 2.0},
+                "40205": {"name": "TR. INST. ON SINGLE POLE 50-250 kVA", "qty": 1.0}
             }
         }
     ]
