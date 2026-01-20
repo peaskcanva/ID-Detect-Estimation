@@ -6,7 +6,7 @@ from io import BytesIO
 
 st.set_page_config(page_title="PEA AI Auditor PRO", layout="wide")
 
-# ปรับแต่ง CSS สำหรับสถานะและส่วนต่าง
+# ปรับแต่ง CSS
 st.markdown("""
     <style>
     .stDataFrame { border-radius: 10px; }
@@ -14,7 +14,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("⚡ PEA AI PDF Auditor (Difference Analysis Mode)")
+st.title("⚡ PEA AI PDF Auditor (Smart Tracking Edition)")
 
 # --- ฐานข้อมูลมาตรฐาน (ฉบับสมบูรณ์) ---
 TR_STANDARDS = {
@@ -79,12 +79,11 @@ TR_STANDARDS = {
 }
 
 def color_status(val):
-    if "ครบ" in str(val): return 'background-color: #d4edda'
-    if "ขาด" in str(val): return 'background-color: #f8d7da'
-    if "เกิน" in str(val): return 'background-color: #fff3cd'
-    return ''
+    if val == "✅ ถูกต้อง": return 'background-color: #d4edda'
+    if val == "⚠️ จำนวนไม่ตรง": return 'background-color: #fff3cd'
+    return 'background-color: #f8d7da'
 
-uploaded_file = st.file_uploader("📂 อัปโหลดไฟล์ PDF ตรวจสอบพัสดุ", type="pdf")
+uploaded_file = st.file_uploader("📂 อัปโหลดไฟล์ PDF (50/100/160/250 kVA)", type="pdf")
 
 if uploaded_file:
     with pdfplumber.open(uploaded_file) as pdf:
@@ -93,55 +92,61 @@ if uploaded_file:
         detected_size = next((sz for sz, d in TR_STANDARDS.items() if d["TR_CODE"] in clean_text_check), None)
 
         if detected_size:
-            st.success(f"✅ ตรวจพบหม้อแปลงขนาด **{detected_size} kVA**")
+            st.success(f"📌 ตรวจพบหม้อแปลงขนาด **{detected_size} kVA**")
             check_list = TR_STANDARDS[detected_size]["items"]
-            audit_results = []
+            audit_data = []
 
+            # 1. ตรวจสอบรายการมาตรฐาน
             for code, std in check_list.items():
-                found_qty = 0.0
+                found_qty, status = "ไม่พบ", "❌ ไม่พบในไฟล์"
                 if code in clean_text_check:
                     row = re.search(f"{code}.*?(\n|$)", full_text)
                     if row:
                         nums = re.findall(r"-?\d+\.\d+", row.group(0))
                         if nums:
                             found_qty = float(nums[-1])
-                
-                # คำนวณส่วนต่าง
-                diff = found_qty - std['qty']
-                
-                # วิเคราะห์หมายเหตุ
-                if diff == 0:
-                    note = "✅ ครบถ้วน"
-                elif diff < 0:
-                    note = f"❌ ขาดไป {abs(diff):.1f}"
-                else:
-                    note = f"➕ เกินมา {diff:.1f}"
+                            status = "✅ ถูกต้อง" if found_qty == std['qty'] else "⚠️ จำนวนไม่ตรง"
+                audit_data.append({"รหัสพัสดุ": code, "รายการ": std['name'], "มาตรฐาน": std['qty'], "ในไฟล์": found_qty, "สถานะ": status})
 
-                audit_results.append({
-                    "รหัสพัสดุ": code,
-                    "ชื่ออุปกรณ์": std['name'],
-                    "มาตรฐาน": std['qty'],
-                    "ในไฟล์ PDF": found_qty,
-                    "ส่วนต่าง": diff,
-                    "หมายเหตุ": note
-                })
+            # 2. ตรวจสอบรายการส่วนเกิน (ดึงชื่อจาก PDF)
+            extra_items = []
+            all_found_codes = set(re.findall(r'\d{10}', clean_text_check))
+            for f_code in all_found_codes:
+                if f_code not in check_list and f_code != TR_STANDARDS[detected_size]["TR_CODE"]:
+                    row_match = re.search(f"^(.*){f_code}(.*)$", full_text, re.MULTILINE)
+                    name_from_pdf = "ไม่พบชื่อในบรรทัด"
+                    found_qty = "N/A"
+                    if row_match:
+                        prefix_text = row_match.group(1).strip()
+                        # ล้างตัวเลขลำดับ (ถ้ามี) เช่น "1. " ออกจากหน้าชื่อ
+                        name_from_pdf = re.sub(r'^\d+\.?\s*', '', prefix_text)
+                        line_nums = re.findall(r"-?\d+\.\d+", row_match.group(0))
+                        if line_nums:
+                            found_qty = float(line_nums[-1])
+                    
+                    extra_items.append({
+                        "รหัสพัสดุ": f_code, 
+                        "ชื่อที่พบใน PDF": name_from_pdf, 
+                        "จำนวน": found_qty,
+                        "สถานะ": "🚩 รายการส่วนเกิน"
+                    })
 
-            df = pd.DataFrame(audit_results)
-            st.subheader(f"📊 รายงานวิเคราะห์ส่วนต่าง (หม้อแปลง {detected_size} kVA)")
-            
-            # แสดงตารางพร้อมไฮไลท์สีในคอลัมน์หมายเหตุ
-            st.dataframe(df.style.applymap(color_status, subset=['หมายเหตุ']), use_container_width=True)
+            st.subheader(f"📊 ผลการตรวจสอบรายการมาตรฐาน {detected_size} kVA")
+            st.dataframe(pd.DataFrame(audit_data).style.applymap(color_status, subset=['สถานะ']), use_container_width=True)
+
+            if extra_items:
+                st.subheader("🚩 รายการที่พบใน PDF แต่ไม่อยู่ในมาตรฐาน")
+                st.dataframe(pd.DataFrame(extra_items), use_container_width=True)
 
             # ปุ่มดาวน์โหลด Excel
             output = BytesIO()
-            with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-                df.to_excel(writer, index=False, sheet_name='Difference_Analysis')
-            
-            st.download_button(
-                label="📥 Download รายงานส่วนต่าง (Excel)",
-                data=output.getvalue(),
-                file_name=f"Difference_Report_{detected_size}kVA.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
+            try:
+                with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+                    pd.DataFrame(audit_data).to_excel(writer, index=False, sheet_name='Standard_Audit')
+                    if extra_items:
+                        pd.DataFrame(extra_items).to_excel(writer, index=False, sheet_name='Extra_Items')
+                st.download_button(label="📥 Download Excel Report", data=output.getvalue(), file_name=f"Audit_Report_{detected_size}kVA.xlsx")
+            except:
+                st.warning("กรุณาอัปเดต requirements.txt เพื่อเปิดใช้งานปุ่มดาวน์โหลด")
         else:
-            st.error("❌ ไม่พบรหัสหม้อแปลงที่กำหนดในไฟล์นี้ กรุณาตรวจสอบว่าไฟล์ PDF ถูกต้อง")
+            st.error("❌ ไม่พบรหัสหม้อแปลงที่กำหนดในไฟล์นี้")
