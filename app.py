@@ -110,7 +110,7 @@ TR_STANDARDS = {
             "TR_CODE": "1050010068",
             "items": {
                 "1020070007": {"name": "Cable,AL,Compact 185 sq.mm.", "qty": 55.0},
-                "1020420106": {"name": "Cable Lug,Compression type, AL 185 sq.mm.": 10.0},
+                "1020420106": {"name": "Cable Lug,Compression type, AL 185 sq.mm.", "qty": 10.0},
                 "1040020005": {"name": "L.T. H.R.C. FUSE 200 A.", "qty": -3.0},
                 "1040020015": {"name": "H.R.C. FUSE, BLADE CONTACT, 200 A.", "qty": 3.0},            
                 "1040020100": {"name": "L.T. FUSE SWITCHES 1X400 A. 500 V.", "qty": -3.0},
