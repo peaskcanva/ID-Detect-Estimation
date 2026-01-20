@@ -27,12 +27,15 @@ TR_STANDARDS = {
                 "1040020000": {"name": "L.T. H.R.C. FUSE 32-36 A.", "qty": -3.0},
                 "1040020001": {"name": "L.T. H.R.C. FUSE 50 A.", "qty": -3.0},
                 "1040020010": {"name": "H.R.C. FUSE, BLADE CONTACT, 32 A.", "qty": 3.0},
+                "1040020011": {"name": "H.R.C. FUSE, BLADE CONTACT, 50 A.", "qty": 3.0},
                 "1040020100": {"name": "L.T. FUSE SWITCHES 1X400 A. 500 V.", "qty": -6.0},
                 "1040020102": {"name": "FSD, FULL INSULATED, 1X400A, 400V", "qty": 6.0},
                 "1050010066": {"name": "TR. 50 kVA, 3P", "qty": 1.0},
-                "14144": {"name": "X-ARM-C SET", "qty": 1.0},
-                "40114": {"name": "LT WIRING 95 SQ.MM.", "qty": 2.0},
-                "40205": {"name": "TR. INST. SET", "qty": 1.0}
+                "14019": {"name": "L.T. FUSE, 20KVA 3-P,4WIRE, 32A", "qty": 1.0},
+                "14020": {"name": "L.T. FUSE, 30KVA 3-P,4WIRE, 50A", "qty": 1.0},
+                "14144": {"name": "X-ARM-C WITH 6 L.T., 3-P, 2CCT ,12 M", "qty": 1.0},
+                "40114": {"name": "LT WIRING 95 SQ.MM. TO L.T.", "qty": 2.0},
+                "40205": {"name": "TR. INST. ON SINGLE POLE 50-250 kVA", "qty": 1.0}
             }
         },
         {
@@ -55,10 +58,10 @@ TR_STANDARDS = {
                 "1040020100": {"name": "L.T. FUSE SWITCHES 1X400 A. 500 V.", "qty": -6.0},
                 "1040020102": {"name": "FSD, FULL INSULATED, 1X400A", "qty": 6.0},
                 "1050010067": {"name": "TR. 100 kVA, 3P", "qty": 1.0},
-                "14021": {"name": "LT. FUSE SET (50 kVA)", "qty": 2.0},
-                "14144": {"name": "X-ARM-C SET", "qty": 1.0},
-                "40114": {"name": "LT WIRING 95 SQ.MM.", "qty": 2.0},
-                "40205": {"name": "TR. INST. SET", "qty": 1.0}
+                "14021": {"name": "L.T. FUSE, 50KVA 3-P,4WIRE, 80A", "qty": 2.0},
+                "14144": {"name": "X-ARM-C WITH 6 L.T., 3-P, 2CCT ,12 M", "qty": 1.0},
+                "40114": {"name": "LT WIRING 95 SQ.MM. TO L.T.", "qty": 2.0},
+                "40205": {"name": "TR. INST. ON SINGLE POLE 50-250 kVA", "qty": 1.0}
             }
         },
         {
@@ -75,15 +78,17 @@ TR_STANDARDS = {
             "TR_CODE": "1050010068",
             "items": {
                 "1040020002": {"name": "L.T. H.R.C. FUSE 80 A.", "qty": -3.0},
-                "1040020012": {"name": "H.R.C. FUSE, BLADE CONTACT, 80 A.", "qty": 3.0},
                 "1040020004": {"name": "L.T. H.R.C. FUSE 150-160 A.", "qty": -3.0},
-                "1040020014": {"name": "H.R.C. FUSE, BLADE CONTACT, 160 A.", "qty": 3.0},
+                "1040020012": {"name": "H.R.C. FUSE, BLADE CONTACT, 80 A.", "qty": 3.0},
+                "1040020014": {"name": "H.R.C. FUSE, BLADE CONTACT, 160 A.", "qty": 3.0},            
                 "1040020100": {"name": "L.T. FUSE SWITCHES 1X400 A. 500 V.", "qty": -6.0},
                 "1040020102": {"name": "FSD, FULL INSULATED, 1X400A", "qty": 6.0},
                 "1050010068": {"name": "TR. 160 kVA, 3P", "qty": 1.0},
-                "14144": {"name": "X-ARM-C SET", "qty": 1.0},
-                "40114": {"name": "LT WIRING 95 SQ.MM.", "qty": 2.0},
-                "40205": {"name": "TR. INST. SET", "qty": 1.0}
+                "14021": {"name": "L.T. FUSE, 50KVA 3-P,4WIRE, 80A", "qty": 1.0},
+                "14023": {"name": "L.T. FUSE, 100KVA 3-P,4WIRE, 160A", "qty": 1.0},
+                "14144": {"name": "X-ARM-C WITH 6 L.T., 3-P, 2CCT ,12 M", "qty": 1.0},
+                "40114": {"name": "LT WIRING 95 SQ.MM. TO L.T.", "qty": 2.0},
+                "40205": {"name": "TR. INST. ON SINGLE POLE 50-250 kVA", "qty": 1.0}
             }
         },
         {
@@ -100,15 +105,17 @@ TR_STANDARDS = {
             "TR_CODE": "1050010069",
             "items": {
                 "1040020004": {"name": "L.T. H.R.C. FUSE 150-160 A.", "qty": -3.0},
-                "1040020014": {"name": "H.R.C. FUSE, BLADE CONTACT, 160 A.", "qty": 3.0},
                 "1040020005": {"name": "L.T. H.R.C. FUSE 200 A.", "qty": -3.0},
+                "1040020014": {"name": "H.R.C. FUSE, BLADE CONTACT, 160 A.", "qty": 3.0},
                 "1040020015": {"name": "H.R.C. FUSE, BLADE CONTACT, 200 A.", "qty": 3.0},
                 "1040020100": {"name": "L.T. FUSE SWITCHES 1X400 A. 500 V.", "qty": -6.0},
                 "1040020102": {"name": "FSD, FULL INSULATED, 1X400A", "qty": 6.0},
                 "1050010069": {"name": "TR. 250 kVA, 3P", "qty": 1.0},
-                "14144": {"name": "X-ARM-C SET", "qty": 1.0},
-                "40115": {"name": "LT WIRING 120 SQ.MM.", "qty": 2.0},
-                "40205": {"name": "TR. INST. SET", "qty": 1.0}
+                "14023": {"name": "L.T. FUSE, 100KVA 3-P,4WIRE, 160A", "qty": 1.0},
+                "14024": {"name": "L.T. FUSE, 140KVA 3-P,4WIRE, 200A", "qty": 1.0},
+                "14144": {"name": "X-ARM-C WITH 6 L.T., 3-P, 2CCT ,12 M", "qty": 1.0},
+                "40115": {"name": "LT WIRING 120 SQ.MM. TO L.T.", "qty": 2.0},
+                "40205": {"name": "TR. INST. ON SINGLE POLE 50-250 kVA", "qty": 1.0}
             }
         },
         {
