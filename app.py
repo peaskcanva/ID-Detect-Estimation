@@ -4,7 +4,7 @@ import re
 import pandas as pd
 from io import BytesIO
 
-st.set_page_config(page_title="PEA AI Auditor PRO", layout="wide")
+st.set_page_config(page_title="PEA ตรวจสอบ ประมาณการ", layout="wide")
 
 # ปรับแต่ง CSS
 st.markdown("""
