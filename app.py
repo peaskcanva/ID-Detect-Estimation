@@ -14,7 +14,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("⚡ PEA AI PDF Auditor (Standard Checklist Mode)")
+st.title("⚡ PEA ตรวจสอบข้อมูล ประมาณการ")
 
 # --- ฐานข้อมูลมาตรฐาน (ฉบับสมบูรณ์) ---
 TR_STANDARDS = {
